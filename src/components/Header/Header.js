@@ -1,4 +1,4 @@
 
 export const Header = () =>{
-    return <></>
+    return <div className="header"></div>
 }
