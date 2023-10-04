@@ -4,4 +4,19 @@
   min-height: 100vh;
   margin: auto;
   display: grid;
+  font-family: Inter, Arial, sans-serif;
 } 
+
+.link{
+  text-decoration: none;
+  color: black;
+}
+
+.link_selected{
+  font-weight: 500;
+}
+
+.link:hover{
+  opacity: 70%;
+  cursor: pointer;
+}
