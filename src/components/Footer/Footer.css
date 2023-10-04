@@ -1,3 +1,43 @@
-.footer {
+.footer{
+  display: flex;
+  flex-direction: column;
+  padding: 79px clamp(13px, 3.9vw,70px) 20px;
   margin-top: auto;
+  font-size: 13px;
 }
+
+.footer__yandex-practicum{
+  border-bottom: 1px solid #E8E8E8;
+  text-align: center;
+  padding-bottom: 20px;
+  color: #A0A0A0;
+}
+
+.footer__container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.footer__link-container{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .footer__link-container{
+    flex-direction: column;
+    gap: 12px;
+  }
+  .footer__container{
+    flex-direction: column-reverse;
+    padding-top: 30px;
+    gap: 30px;
+  }
+  .footer__year{
+    color: #A0A0A0;
+  }
+}
+

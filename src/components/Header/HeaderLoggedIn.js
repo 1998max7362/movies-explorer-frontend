@@ -25,7 +25,7 @@ export const HeaderLoggedIn = ({pathname}) => {
           <Link className={`link ${pathname==='/'&&'header__link_ismain'}`} to="/saved-movies">Сохранённые фильмы</Link>
         </div>
         <Link className={`header__profile link ${pathname==='/'&&'header__profile_main'}`} to="/profile">
-          <p>Аккаунт</p>
+          <p className="text">Аккаунт</p>
           <img className="header__logo-account" src={headerProfile} alt="Лого-аккаунт" />
         </Link></>}
     </>)
