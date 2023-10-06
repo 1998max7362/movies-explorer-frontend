@@ -1,7 +1,7 @@
 .footer{
   display: flex;
   flex-direction: column;
-  padding: 79px clamp(13px, 3.9vw,70px) 20px;
+  padding: 79px clamp(10px,calc(70px - (1280px - 100vw)/12.8), 70px) 20px;
   margin-top: auto;
   font-size: 13px;
 }
@@ -38,6 +38,10 @@
   }
   .footer__year{
     color: #A0A0A0;
+  }
+  .footer{
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 

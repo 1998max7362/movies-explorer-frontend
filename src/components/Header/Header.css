@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px clamp(13px, 3.9vw,70px);
+  padding: 18px clamp(14px,calc(70px - (1280px - 100vw)/12.8), 70px);
 }
 
 .header_is-main-page{
@@ -23,8 +23,9 @@
   color: white;
 }
 
-.header__link_ismain{
+.header__link-ismain{
   color: white;
+  font-size: clamp(10px,2.01vw,12px);;
 }
 
 .header__profile{
@@ -61,5 +62,7 @@
   display: inline;
   background-color: #2BE080;
   border: none;
-  padding: clamp(5px,0.01vw, 8px) clamp(12px, 0.026vw, 20px)
+  padding: clamp(5px,0.01vw, 8px) clamp(12px, 0.026vw, 20px);
+  font-size: clamp(10px,2.01vw,12px);
+  line-height: 16px;
 }
