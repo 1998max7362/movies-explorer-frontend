@@ -2,7 +2,7 @@ import { SearchMovies } from "./SearchForm/SearchMovies"
 import { MoviesGrid } from "./MoviesGrid/MoviesGrid"
 import "./Movies.css"
 
-export const Movies = () => {
+export const Movies = ({saved}) => {
     return <section className="movies">
         <SearchMovies />
         <MoviesGrid />

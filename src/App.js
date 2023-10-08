@@ -34,7 +34,7 @@ function App() {
               element={<Main />} />
             <Route
               path="saved-movies"
-              element={<SavedMovies />} />
+              element={<Movies saved/>} />
             <Route
               path="movies"
               element={<Movies />} />
