@@ -13,7 +13,8 @@
   border: none;
   font-size: 28px;
   font-weight: 500;
-  color:  #A0A0A0;;
+  color:  #A0A0A0;
+  width: 100%;
 }
 
 .search__input:focus{
@@ -114,7 +115,7 @@
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 540px) {
   .search{
     padding-top: 90px;
     padding-bottom: 51px;
