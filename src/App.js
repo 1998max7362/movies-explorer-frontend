@@ -5,13 +5,11 @@ import {
 } from "react-router-dom";
 import { HeaderLayout } from "./components/HeaderLayout/HeaderLayout";
 import { Profile } from "./components/Profile/Profile";
-import { Login } from "./components/Login/Login";
-import { Register } from "./components/Rigister/Rigister";
 import { PageNotFound } from "./components/PageNotFound/PageNotFound";
 import { FooterLayout } from "./components/FooterLayout/FooterLayout";
 import { Main } from "./components/Main/Main";
-import { SavedMovies } from "./components/SavedMovies/SavedMovies";
 import { Movies } from "./components/Movies/Movies";
+import { Sign } from "./components/Sign/Sign";
 
 function App() {
   
@@ -43,10 +41,10 @@ function App() {
 
         <Route
           path="signin"
-          element={<Login />} />
+          element={<Sign register />} />
         <Route
           path="signup"
-          element={<Register />} />
+          element={<Sign />} />
         <Route
           path="*"
           element={<PageNotFound />} />
