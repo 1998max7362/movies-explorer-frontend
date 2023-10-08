@@ -5,11 +5,11 @@ import {
 } from "react-router-dom";
 import { HeaderLayout } from "./components/HeaderLayout/HeaderLayout";
 import { Profile } from "./components/Profile/Profile";
-import { PageNotFound } from "./components/PageNotFound/PageNotFound";
 import { FooterLayout } from "./components/FooterLayout/FooterLayout";
 import { Main } from "./components/Main/Main";
 import { Movies } from "./components/Movies/Movies";
 import { Sign } from "./components/Sign/Sign";
+import { Error404 } from "./components/Error404/Error404";
 
 function App() {
   
@@ -47,7 +47,7 @@ function App() {
           element={<Sign />} />
         <Route
           path="*"
-          element={<PageNotFound />} />
+          element={<Error404 />} />
 
       </Routes>
     </div>
