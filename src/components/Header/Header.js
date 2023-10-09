@@ -10,7 +10,7 @@ export const Header = ({}) => {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false)
   let { pathname } = useLocation();
 
-  const isLoggedIn = true
+  const isLoggedIn = true //для тестов
 
   return(<>
     <header className={`header ${pathname === '/' && 'header_is-main-page'}`}>
