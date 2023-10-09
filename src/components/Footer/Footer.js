@@ -7,8 +7,8 @@ export const Footer = () => {
     <div className="footer__container">
       <p className="text footer__year">&#169;2023</p>
       <div className="footer__link-container">
-        <Link className="link" to='https://practicum.yandex.ru/'>Яндекс.Практикум</Link>
-        <Link className="link" to='https://github.com/1998max7362/'>GitHub</Link>
+        <Link className="link" to='https://practicum.yandex.ru/' target="_blank">Яндекс.Практикум</Link>
+        <Link className="link" to='https://github.com/1998max7362/' target="_blank">GitHub</Link>
       </div>
     </div>
   </footer>

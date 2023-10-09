@@ -37,10 +37,27 @@
   font-weight: 500;
 }
 
-.movies__like-button{
+.movies__button{
+  border: 0;
+  background-color: unset;
   min-width: 24px;
   min-height: 24px;
 }
+
+.movies__button_liked{
+  background-image: url("../../images//movies//like-icon.svg");
+}
+
+.movies__button_not-liked{
+  background-image: url("../../images//movies/like-icon-empty.svg");
+}
+
+.movies__button_remove{
+  background-image: url("../../images//movies//remove-icon.svg");
+}
+
+
+
 
 .movies__duration{
   color: #A0A0A0;

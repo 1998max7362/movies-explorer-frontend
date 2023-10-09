@@ -2,21 +2,23 @@ import "./Header.css"
 import headerLogo from "../../images/Header/logo.svg"
 import { HeaderLoggedIn } from "./HeaderLoggedIn";
 import { HeaderNotLoggedIn } from "./HeaderNotLoggedIn";
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { NavMenu } from "../NavMenu/NavMenu";
 import { useState } from "react";
 
-export const Header = ({}) => {
+export const Header = ({ }) => {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false)
   let { pathname } = useLocation();
 
   const isLoggedIn = true //для тестов
 
-  return(<>
+  return (<>
     <header className={`header ${pathname === '/' && 'header_is-main-page'}`}>
-      <img className="header__logo" src={headerLogo} alt="Лого" />
+      <Link to={'/'}>
+        <img className="link header__logo" src={headerLogo} alt="Лого" />
+      </Link>
       {isLoggedIn ?
-        <HeaderLoggedIn pathname={pathname} openMenu={() => setNavMenuIsOpened(true)}/>
+        <HeaderLoggedIn pathname={pathname} openMenu={() => setNavMenuIsOpened(true)} />
         : <HeaderNotLoggedIn />
       }
     </header>

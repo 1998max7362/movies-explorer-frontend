@@ -12,6 +12,8 @@ import { Sign } from "./components/Sign/Sign";
 import { Error404 } from "./components/Error404/Error404";
 
 function App() {
+
+  document.documentElement.lang = 'ru'
   
   return (
     <div className="App">

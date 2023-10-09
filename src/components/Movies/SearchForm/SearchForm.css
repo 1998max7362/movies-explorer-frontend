@@ -17,6 +17,10 @@
   width: 100%;
 }
 
+.search__row:focus{
+  background-color: aqua;
+}
+
 .search__input:focus{
   outline: none;
 }
@@ -33,14 +37,14 @@
   border-radius: 48px;
 }
 
-.search-form__short-movies-switch {
+.search__short-movies-switch {
   display: flex;
   align-items: center;
   padding: 0;
   margin-top: 32px;
 }
 
-.search-form__switch {
+.search__switch {
   position: relative;
   display: inline-block;
   width: 36px;
@@ -49,13 +53,13 @@
   margin: 0 12px 0 0;
 }
 
-.search-form__checkbox {
+.search__checkbox {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.search-form__slider {
+.search__slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -67,7 +71,7 @@
   transition: 0.4s;
 }
 
-.search-form__slider:before {
+.search__slider:before {
   position: absolute;
   content: '';
   height: 16px;
@@ -79,19 +83,19 @@
   transition: 0.4s;
 }
 
-.search-form__checkbox:checked + .search-form__slider {
+.search__checkbox:checked + .search__slider {
   background-color: #2be080;
 }
 
-.search-form__checkbox:focus + .search-form__slider {
+.search__checkbox:focus + .search__slider {
   box-shadow: 0 0 2px #2be080;
 }
 
-.search-form__checkbox:checked + .search-form__slider:before {
+.search__checkbox:checked + .search__slider:before {
   transform: translateX(16px);
 }
 
-.search-form__short-movies-text {
+.search__short-movies-text {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -110,10 +114,10 @@
     padding-bottom: 61px;
   }
 
-  .search-form__short-movies-switch {
+  .search__short-movies-switch {
     flex-direction: row-reverse;
   }
-  .search-form__switch {
+  .search__switch {
     margin-left: 12px;
   }
 }
@@ -127,16 +131,16 @@
     padding-bottom: 9px;
   }
 
-  .search-form__short-movies-switch {
+  .search__short-movies-switch {
     justify-content: center;
     margin-top: 41px;
   }
 
-  .search-form__short-movies-text {
+  .search__short-movies-text {
     font-size: 11px;
   }
 
-  .search-form__switch {
+  .search__switch {
     margin-left: 12px;
   }
 

@@ -5,7 +5,7 @@ import "./Movies.css"
 export const Movies = ({saved}) => {
     return <section className="movies">
         <SearchMovies />
-        <MoviesGrid />
+        <MoviesGrid saved/>
         <button className="link movies__more">Еще</button>
     </section>
 }

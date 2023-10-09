@@ -26,7 +26,7 @@
   margin-bottom: 5px;
 }
 
-.sign_input {
+.sign__input {
   width: 100%;
   border: none;
   font-size: 14px;
@@ -35,7 +35,7 @@
   margin-bottom: 6px;
 }
 
-.sign_input:focus {
+.sign__input:focus {
   outline: none;
 }
 
