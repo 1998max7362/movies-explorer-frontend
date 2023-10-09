@@ -17,6 +17,8 @@
   font-size: clamp(10px, 1.1vw, 13px);
   line-height: 16px;
   color: black;
+  position: relative;
+  left: 30px
 }
 
 .header__navigation-container_main{
@@ -25,7 +27,6 @@
 
 .header__link_ismain{
   color: white;
-  font-size: clamp(10px,2.01vw,12px);;
 }
 
 .header__profile{

@@ -40,10 +40,10 @@ function App() {
         </Route>
 
         <Route
-          path="signin"
+          path="signup"
           element={<Sign register />} />
         <Route
-          path="signup"
+          path="signin"
           element={<Sign />} />
         <Route
           path="*"

@@ -7,7 +7,7 @@ export const Sign = ({ register }) => {
 
   return (<form className="sign">
     <img className="sign__logo" src={logo} alt="Logo" />
-    <h2 className="text sign__title">Добро пожаловать!</h2>
+    <h2 className="text sign__title">{register?'Добро пожаловать!':'Рады видеть!'}</h2>
     {register && <div className="sign__input-container">
       <p className="text sign__input-label">Имя</p>
       <input className="sign_input" type="text" value="Крякря" />
@@ -24,12 +24,12 @@ export const Sign = ({ register }) => {
       <p className="text sign__error">что-то</p>
     </div>
     <button className={`sign__button ${register&&'sign__button_register'}`} type="submit">
-      {register ? 'Войти' : 'Регистрация'}
+      {register ? 'Зарегистрироваться':'Войти' }
     </button>
     <p className="text sign__extra-text">
       {register ? 'Уже зарегистированы? ' : 'Еще не зарегистированы? '}
-      <Link to={register ? '/signup' : '/signin'} className="link text sign__extra-link">
-        {register ? 'Регистрация' : 'Войти'}
+      <Link to={register ? '/signin': '/signup' } className="link text sign__extra-link">
+        {register ? 'Войти':'Регистрация' }
       </Link>
     </p>
   </form>)

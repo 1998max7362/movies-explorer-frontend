@@ -13,7 +13,7 @@
   font-weight: 400;
   font-size: clamp(30px,5.2vw,50px);
   max-width: 680px;
-  letter-spacing: -4%;
+  line-height: 1.25;
 }
 
 .hero__text{

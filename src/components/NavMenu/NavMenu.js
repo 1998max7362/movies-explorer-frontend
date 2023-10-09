@@ -7,13 +7,13 @@ import "./Navigate-popup.css"
 export const NavMenu = ({ isOpened, closeMenu }) => {
   let { pathname } = useLocation();
 
-  return (<section className={`navigate-popup ${!isOpened && 'navigate-popup_closed'}`}>
+  return (<section className={`navigate-popup ${!isOpened ?'navigate-popup_closed':'navigate-popup_opened'}`}>
     <div className="link navigate-popup__layer" onClick={closeMenu} />
     <img src={closeButton}
       alt="кнопка закрытия"
       className="link navigate-popup__close-button"
       onClick={closeMenu} />
-    <div className="navigate-popup__container">
+    <div className={`navigate-popup__container ${isOpened ? 'navigate-popup_appear' : 'navigate-popup_disappear'}`}>
       <div className="navigate-popup__links">
         <Link
           className={`link navigate-popup__link ${pathname === '/' && 'navigate-popup__link_current'}`}
