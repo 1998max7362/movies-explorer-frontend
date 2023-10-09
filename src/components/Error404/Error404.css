@@ -1,0 +1,30 @@
+.error-404 {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-404__title {
+  font-size: clamp(80px, 18.3vw, 140px);
+  font-weight: 400;
+}
+
+.error-404__text {
+  font-size: clamp(12px, 2.01vw, 16px);
+  margin-top: 10px;
+  margin-bottom: 184px;
+}
+
+.error-404__link {
+  color: #3456f3;
+  font-size: clamp(12px, 1.83vw, 14px);
+}
+
+@media screen and (max-width: 540px) {
+  .error-404__text {
+    margin-bottom: 284px;
+  }
+}

@@ -1,0 +1,118 @@
+.student{
+  padding: clamp(70px,11.72vw,110px) clamp(14px, 6.51vw, 70px) clamp(70px,11.72vw,125px);
+}
+
+.student__container{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 66px;
+}
+
+.student__description-container{
+  max-width: 600px;
+  margin-right: 49px;
+}
+
+.student__avatar{
+  object-fit: cover;
+  aspect-ratio: 292 / 352;
+  max-width: clamp(255px,33.2vw,270px);
+  border-radius: 10px;
+}
+
+.student__name{
+  line-height: 1.2;
+  font-size: clamp(30px,5.2vw,50px);
+  font-weight: 400;
+}
+
+.student__job{
+  font-size: clamp(11px,1.5625vw,18px);
+  font-weight: 500;
+  margin-top: clamp(16px,2.01vw,18px);
+  line-height: 1.2; 
+}
+
+.student__description-text{
+  margin-top: clamp(20px,2.6vw,26px);
+  margin-bottom: clamp(40px, 11.33vw,99px);
+}
+
+.student__github-link{
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.student__portfolio-container{
+  display: flex;
+  flex-direction: column;
+  padding-top: clamp(70px, 11.72vw,100px);
+}
+
+.student__portfolio-text{
+  color: #A0A0A0;
+  font-weight: 400;
+  line-height: 20px;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.student__portfolio-item{
+  padding-bottom: 19px;
+  border-bottom: 1px solid #e8e8e8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.student__portfolio-item:last-of-type{
+  border: 0;
+  padding-bottom: 0;
+}
+
+.student__portfolio-item-logo{
+  max-height: clamp(12px,2.35vw,18px);
+  min-height: clamp(12px,2.35vw,18px);
+}
+
+.student__portfolio-text-item{
+  font-size: clamp(18px,3.646vw, 30px);
+  line-height: clamp(28px,6.51vw, 50px);;
+}
+
+@media screen and (max-width: 600px) {
+  .student__container{
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    margin-right: 0;
+    padding-top: 60px;
+  }
+  .student__description-container{
+    margin-right: 0;
+  }
+  .student__avatar{
+    max-width: 292px
+  }
+  .student__name{
+    margin-top: 40px;
+  }
+  .student__job{
+    font-size: clamp(12px,18px);
+    font-weight: 500;
+    margin-top: 20px;
+  }
+  .student__portfolio-text{
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .student__portfolio-item-logo{
+    height: 28px;
+  }
+  .student{
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+

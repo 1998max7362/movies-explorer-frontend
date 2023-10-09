@@ -3,21 +3,55 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { Header } from "./components/Header/Header";
-import { Footer } from "./components/Footer/Footer";
+import { HeaderLayout } from "./components/HeaderLayout/HeaderLayout";
+import { Profile } from "./components/Profile/Profile";
+import { FooterLayout } from "./components/FooterLayout/FooterLayout";
+import { Main } from "./components/Main/Main";
+import { Movies } from "./components/Movies/Movies";
+import { Sign } from "./components/Sign/Sign";
+import { Error404 } from "./components/Error404/Error404";
 
 function App() {
+
+  document.documentElement.lang = 'ru'
+  
   return (
-    <div className="body">
-      <div className="page">
-        <Header />
-        <Routes>
+    <div className="App">
+      <Routes>
+
+        <Route
+          path="/"
+          element={<HeaderLayout />}>
           <Route
-            path="/"
-            element={<></>} />
-        </Routes>
-        <Footer />
-      </div>
+            path="profile"
+            element={<Profile />} />
+
+          <Route
+            path=""
+            element={<FooterLayout />}>
+            <Route
+              path=""
+              element={<Main />} />
+            <Route
+              path="saved-movies"
+              element={<Movies saved/>} />
+            <Route
+              path="movies"
+              element={<Movies />} />
+          </Route>
+        </Route>
+
+        <Route
+          path="signup"
+          element={<Sign register />} />
+        <Route
+          path="signin"
+          element={<Sign />} />
+        <Route
+          path="*"
+          element={<Error404 />} />
+
+      </Routes>
     </div>
   );
 }

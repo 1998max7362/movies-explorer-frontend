@@ -1,0 +1,150 @@
+.search{
+  padding: 70px clamp(14px,calc(70px - (1280px - 100vw)/12.8), 70px) 48px;
+}
+
+.search__row{
+  padding-bottom: 13px;
+  border-bottom: 1px solid #E8E8E8;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search__input{
+  border: none;
+  font-size: 28px;
+  font-weight: 500;
+  color:  #A0A0A0;
+  width: 100%;
+}
+
+.search__row:focus{
+  background-color: aqua;
+}
+
+.search__input:focus{
+  outline: none;
+}
+
+.search__button{
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 18px;
+  background-color: #3456F3;
+  color: white;
+  border: none;
+  min-width: 58.65px;
+  min-height: 34px;
+  border-radius: 48px;
+}
+
+.search__short-movies-switch {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin-top: 32px;
+}
+
+.search__switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  padding: 0;
+  margin: 0 12px 0 0;
+}
+
+.search__checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.search__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 0.4s;
+}
+
+.search__slider:before {
+  position: absolute;
+  content: '';
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.search__checkbox:checked + .search__slider {
+  background-color: #2be080;
+}
+
+.search__checkbox:focus + .search__slider {
+  box-shadow: 0 0 2px #2be080;
+}
+
+.search__checkbox:checked + .search__slider:before {
+  transform: translateX(16px);
+}
+
+.search__short-movies-text {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  text-rendering: optimizeLegibility;
+  text-decoration: none;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 838px) {
+  .search{
+    padding-top: 80px;
+    padding-bottom: 61px;
+  }
+
+  .search__short-movies-switch {
+    flex-direction: row-reverse;
+  }
+  .search__switch {
+    margin-left: 12px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .search{
+    padding-top: 84px;
+    padding-bottom: 51px;
+  }
+  .search__row{
+    padding-bottom: 9px;
+  }
+
+  .search__short-movies-switch {
+    justify-content: center;
+    margin-top: 41px;
+  }
+
+  .search__short-movies-text {
+    font-size: 11px;
+  }
+
+  .search__switch {
+    margin-left: 12px;
+  }
+
+  .search__input{
+    font-size: 18px;
+  }
+}

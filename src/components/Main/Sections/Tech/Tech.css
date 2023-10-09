@@ -1,0 +1,50 @@
+.tech{
+  padding: clamp(70px, 11.72vw,100px) clamp(18px, 6.51vw, 70px);
+  background-color: #F5F5F5;
+}
+
+.tech__container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.tech__title{
+  margin-top: clamp(60px, 10.564vw, 90px);
+  line-height: 1.2;
+  font-size: clamp(30px, 6.51vw,50px);
+  font-weight: 400;
+}
+
+.tech__text{
+  max-width: 460px;
+  margin-top: min(26px, 2.865vw);
+}
+
+.tech__all-technologies{
+  margin-top: clamp(50px, 10.8vw,100px);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  
+}
+
+.tech__technology{
+  border-radius: 10px;
+  min-width: clamp(84px, 10.94vw, 90px);
+  min-height: clamp(57px, 7.422vw, 60px);
+  background-color: #E8E8E8;
+  text-align: center;
+  line-height: clamp(57px, 7.422vw, 60px);
+  
+}
+
+@media screen and (max-width: 767px) {
+  .tech__text{
+    margin-top: 24px;
+  }
+  .tech__all-technologies{
+    grid-template-columns: 1fr 1fr;
+  }
+}
