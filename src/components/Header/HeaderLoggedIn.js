@@ -27,12 +27,12 @@ export const HeaderLoggedIn = ({ pathname, openMenu }) => {
       </>
       : <>
         <div className={`header__navigation-container ${pathname === '/' && 'header__navigation-container_main'}`}>
-          <Link className={`link ${pathname === '/' && 'header__link_ismain'}`} to="/movies">Фильмы</Link>
-          <Link className={`link ${pathname === '/' && 'header__link_ismain'}`} to="/saved-movies">Сохранённые фильмы</Link>
+          <Link className={`link ${pathname === '/' && 'header__link-ismain'}`} to="/movies">Фильмы</Link>
+          <Link className={`link ${pathname === '/' && 'header__link-ismain'}`} to="/saved-movies">Сохранённые фильмы</Link>
         </div>
-        <Link className={`header__profile link ${pathname === '/' && 'header__profile_main'}`} to="/profile">
+        <Link className={`profile-button link ${pathname === '/' && 'header__profile-main'}`} to="/profile">
           <p className="text">Аккаунт</p>
-          <img className="header__logo-account" src={headerProfile} alt="Лого-аккаунт" />
+          <img className="profile-button-logo" src={headerProfile} alt="Лого-аккаунт" />
         </Link>
       </>}
     </>)

@@ -14,7 +14,7 @@ export const NavMenu = ({ isOpened, closeMenu }) => {
       alt="кнопка закрытия"
       className="link navigate-popup__close-button"
       onClick={closeMenu} />
-    <div className={`navigate-popup__container ${isOpened ? 'navigate-popup_appear' : 'navigate-popup_disappear'}`}>
+    <div className={`navigate-popup__container ${isOpened ? 'navigate-popup_appear' : 'navigate-popup-disappear'}`}>
       <div className="navigate-popup__links">
         <Link
           className={`link navigate-popup__link ${pathname === '/' && 'navigate-popup__link_current'}`}
@@ -28,13 +28,13 @@ export const NavMenu = ({ isOpened, closeMenu }) => {
           className={`link navigate-popup__link ${pathname === '/saved-movies' && 'navigate-popup__link_current'}`}
           to={'saved-movies'}
           onClick={closeMenu}>Сохранённые фильмы</Link>
-        <div className="header__profile link navigate-popup__profile" onClick={()=>{
+        <div className="profile-button link navigate-popup__profile" onClick={()=>{
           closeMenu()
           navigate('/profile')
         }}>
           <p className="text">Аккаунт</p>
           <img
-            className="header__logo-account "
+            className="profile-button-logo "
             src={profileLogo}
             alt="Лого-аккаунт"
           />

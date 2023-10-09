@@ -25,11 +25,11 @@
   color: white;
 }
 
-.header__link_ismain{
+.header__link-ismain{
   color: white;
 }
 
-.header__profile{
+.profile-button{
   display: flex;
   box-shadow: 0px 3px 14px 0px #00000014;
   max-height: 32px;
@@ -40,11 +40,11 @@
   font-size: 13px;
 }
 
-.header__profile_main{
+.header__profile-main{
   background-color: #2BE080;
 }
 
-.header__logo-account{
+.profile-button-logo{
   margin: 0 3px 0 7px;
   width: 26px;
 }
