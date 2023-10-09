@@ -40,7 +40,7 @@
   
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 767px) {
   .tech__text{
     margin-top: 24px;
   }

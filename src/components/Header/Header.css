@@ -23,7 +23,7 @@
   color: white;
 }
 
-.header__link-ismain{
+.header__link_ismain{
   color: white;
   font-size: clamp(10px,2.01vw,12px);;
 }
@@ -36,6 +36,7 @@
   padding-left: 11px;
   border-radius: 40px;
   font-weight: 500;
+  font-size: 13px;
 }
 
 .header__profile_main{

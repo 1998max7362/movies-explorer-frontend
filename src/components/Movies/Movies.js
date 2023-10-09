@@ -6,6 +6,6 @@ export const Movies = ({saved}) => {
     return <section className="movies">
         <SearchMovies />
         <MoviesGrid />
-        <button class="link movies__more">Еще</button>
+        <button className="link movies__more">Еще</button>
     </section>
 }
