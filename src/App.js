@@ -10,11 +10,17 @@ import { Main } from "./components/Main/Main";
 import { Movies } from "./components/Movies/Movies";
 import { Sign } from "./components/Sign/Sign";
 import { Error404 } from "./components/Error404/Error404";
+import { useCurrentUser } from "./contexts/currentUser";
+import { useEffect } from "react";
 
 function App() {
+  const {currentUser, setCurrentUserInfo} = useCurrentUser((state)=>state)
+  useEffect(() => { document.documentElement.lang = 'ru' }, [])
 
-  document.documentElement.lang = 'ru'
-  
+
+
+
+
   return (
     <div className="App">
       <Routes>
@@ -34,7 +40,7 @@ function App() {
               element={<Main />} />
             <Route
               path="saved-movies"
-              element={<Movies saved/>} />
+              element={<Movies saved />} />
             <Route
               path="movies"
               element={<Movies />} />

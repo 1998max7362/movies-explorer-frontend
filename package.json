@@ -21,7 +21,7 @@
     "web-vitals": "^2.1.4",
     "winston": "^3.10.0",
     "yup": "^1.2.0",
-    "zustand": "^4.4.2"
+    "zustand": "^4.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
