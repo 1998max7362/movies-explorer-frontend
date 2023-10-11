@@ -11,15 +11,27 @@ import { Movies } from "./components/Movies/Movies";
 import { Sign } from "./components/Sign/Sign";
 import { Error404 } from "./components/Error404/Error404";
 import { useCurrentUser } from "./contexts/currentUser";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { mainApi } from "./utils/MainApi";
 
 function App() {
-  const {currentUser, setCurrentUserInfo} = useCurrentUser((state)=>state)
+  const { currentUser, setCurrentUserInfo } = useCurrentUser((state) => state)
+  const [loggedIn, setLoggedIn] = useState(false);
+
   useEffect(() => { document.documentElement.lang = 'ru' }, [])
 
-
-
-
+  useEffect(() => {
+    const initUser = async () => {
+      try {
+        const userData = await mainApi.getCurrentUserInfo();
+        setLoggedIn(true);
+        setCurrentUserInfo(userData);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    initUser()
+  }, [setCurrentUserInfo])
 
   return (
     <div className="App">
