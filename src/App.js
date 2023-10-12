@@ -20,6 +20,7 @@ function App() {
   }, []);
 
   const updateUser = useCallback(async () => {
+    
     try {
       const userData = await mainApi.getCurrentUserInfo();
       setLoggedIn(true);
