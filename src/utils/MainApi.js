@@ -117,10 +117,11 @@ class MainApi {
 
 
   async _getResposeData(res) {
+    const resData = await res.json()
     if (res.ok) {
-      return await res.json();
+      return resData;
     }
-    throw new Error(res.statusText);
+    throw new Error(resData.message);
   }
 }
 
