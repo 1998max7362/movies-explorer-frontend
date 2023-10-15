@@ -1,22 +1,9 @@
-import { useEffect, useState } from "react";
 import headerProfile from "../../images/Header/header-profile.svg"
 import navButton from "../../images/Header/nav-button.svg"
 import navButtonLight from "../../images/Header/nav-button-white.svg"
 import { Link } from 'react-router-dom';
 
 export const HeaderLoggedIn = ({ pathname, openMenu,windowSize }) => {
-  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  // useEffect(() => {
-  //   const handleWindowResize = () => {
-  //     setWindowWidth(window.innerWidth);
-  //   };
-  //   window.addEventListener('resize', handleWindowResize);
-  //   return () => {
-  //     window.removeEventListener('resize', handleWindowResize);
-  //   };
-  // }, []);
-
 
   return (
     <>{windowSize <= 768 ?

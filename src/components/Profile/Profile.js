@@ -4,11 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import './Profile.css';
 import { mainApi } from '../../utils/MainApi';
+import { useCurrentUser } from '../../contexts/currentUser';
 
-export const Profile = ({ currentUser, setCurrentUserInfo, setLoggedIn }) => {
+export const Profile = ({ setLoggedIn }) => {
   const [readOnly, setReadOnly] = useState(true);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { currentUser, setCurrentUserInfo } = useCurrentUser((state) => state);
 
   const handleSubmit = async (values) => {
     try {
@@ -23,7 +25,7 @@ export const Profile = ({ currentUser, setCurrentUserInfo, setLoggedIn }) => {
 
   const signOut = async () => {
     try {
-      const res = await mainApi.signOut();
+      await mainApi.signOut();
       setLoggedIn(false)
       navigate('/');
     } catch (err) {

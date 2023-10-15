@@ -13,8 +13,8 @@ export const Sign = ({ register, updateUser }) => {
   const handleSubmit = register
     ? async (values) => {
         try {
-          const registrationResult = await mainApi.signUp(values);
-          const logginResult = await mainApi.signIn(values);
+          await mainApi.signUp(values);
+          await mainApi.signIn(values);
           await updateUser();
           setError('')
           navigate('/movies')
@@ -24,7 +24,7 @@ export const Sign = ({ register, updateUser }) => {
       }
     : async (values) => {
         try {
-          const logginResult = await mainApi.signIn(values);
+          await mainApi.signIn(values);
           await updateUser();
           setError('')
           navigate('/movies')
