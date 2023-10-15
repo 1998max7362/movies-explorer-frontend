@@ -9,9 +9,7 @@ import { useState } from "react";
 export const Header = ({loggedIn}) => {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false)
   let { pathname } = useLocation();
-
-  console.log(loggedIn)
-
+  
   return (<>
     <header className={`header ${pathname === '/' && 'header_is-main-page'}`}>
       <Link to={'/'}>
