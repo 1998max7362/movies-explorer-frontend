@@ -4,24 +4,22 @@ import navButton from "../../images/Header/nav-button.svg"
 import navButtonLight from "../../images/Header/nav-button-white.svg"
 import { Link } from 'react-router-dom';
 
-export const HeaderLoggedIn = ({ pathname, openMenu }) => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+export const HeaderLoggedIn = ({ pathname, openMenu,windowSize }) => {
+  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleWindowResize);
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleWindowResize = () => {
+  //     setWindowWidth(window.innerWidth);
+  //   };
+  //   window.addEventListener('resize', handleWindowResize);
+  //   return () => {
+  //     window.removeEventListener('resize', handleWindowResize);
+  //   };
+  // }, []);
 
 
   return (
-    <>{windowWidth <= 768 ?
+    <>{windowSize <= 768 ?
       <>
         <img className="link header__nav-button" src={pathname === '/' ? navButtonLight : navButton} alt="Кнопка навигации" onClick={openMenu} />
       </>

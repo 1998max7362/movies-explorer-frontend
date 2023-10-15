@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from '../Header/Header';
 
-export const HeaderLayout = ({loggedIn}) => {
+export const HeaderLayout = ({loggedIn,windowSize}) => {
     return <>
-        <Header loggedIn={loggedIn}/>
+        <Header loggedIn={loggedIn} windowSize={windowSize}/>
         <Outlet />
     </>
 }

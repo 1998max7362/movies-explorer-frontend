@@ -1,5 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
+import debounce from 'lodash.debounce';
 import { HeaderLayout } from './components/HeaderLayout/HeaderLayout';
 import { Profile } from './components/Profile/Profile';
 import { FooterLayout } from './components/FooterLayout/FooterLayout';
@@ -17,24 +18,33 @@ function App() {
   const { currentUser, setCurrentUserInfo } = useCurrentUser((state) => state);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
 
-  // debugger
+  const handleResize = debounce(() => {
+    setWindowSize(window.innerWidth);
+  }, 100);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [handleResize]);
 
   useEffect(() => {
     document.documentElement.lang = 'ru';
   }, []);
 
   const updateUser = useCallback(async () => {
-    setIsFetching(true)
+    setIsFetching(true);
     try {
       const userData = await mainApi.getCurrentUserInfo();
       setLoggedIn(true);
       setCurrentUserInfo(userData);
     } catch (err) {
       console.log(err);
-    }
-    finally{
-      setIsFetching(false)
+    } finally {
+      setIsFetching(false);
     }
   }, [setCurrentUserInfo, setLoggedIn]);
 
@@ -48,7 +58,12 @@ function App() {
         <Preloader />
       ) : (
         <Routes>
-          <Route path='/' element={<HeaderLayout loggedIn={loggedIn} />}>
+          <Route
+            path='/'
+            element={
+              <HeaderLayout loggedIn={loggedIn} windowSize={windowSize} />
+            }
+          >
             <Route
               path='profile'
               element={
@@ -68,7 +83,7 @@ function App() {
                 path='saved-movies'
                 element={
                   <ProtectedRouteElement loggedIn={loggedIn}>
-                    <Movies saved />
+                    <Movies saved windowSize={windowSize} />
                   </ProtectedRouteElement>
                 }
               />
