@@ -25,7 +25,6 @@ export const Sign = ({ register, updateUser }) => {
     : async (values) => {
         try {
           const logginResult = await mainApi.signIn(values);
-          console.log(logginResult);
           updateUser();
           setError('')
           navigate('/movies')

@@ -18,9 +18,7 @@ function App() {
   useEffect(() => {
     document.documentElement.lang = 'ru';
   }, []);
-
   const updateUser = useCallback(async () => {
-    
     try {
       const userData = await mainApi.getCurrentUserInfo();
       setLoggedIn(true);
@@ -38,7 +36,16 @@ function App() {
     <div className='App'>
       <Routes>
         <Route path='/' element={<HeaderLayout />}>
-          <Route path='profile' element={<Profile />} />
+          <Route
+            path='profile'
+            element={
+              <Profile
+                currentUser={currentUser}
+                setCurrentUserInfo={setCurrentUserInfo}
+                setLoggedIn={setLoggedIn}
+              />
+            }
+          />
 
           <Route path='' element={<FooterLayout />}>
             <Route path='' element={<Main />} />
@@ -47,8 +54,11 @@ function App() {
           </Route>
         </Route>
 
-        <Route path='signup' element={<Sign register updateUser={updateUser} />} />
-        <Route path='signin' element={<Sign updateUser={updateUser}/>} />
+        <Route
+          path='signup'
+          element={<Sign register updateUser={updateUser} />}
+        />
+        <Route path='signin' element={<Sign updateUser={updateUser} />} />
         <Route path='*' element={<Error404 />} />
       </Routes>
     </div>
