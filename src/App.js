@@ -10,10 +10,13 @@ import { Error404 } from './components/Error404/Error404';
 import { useCurrentUser } from './contexts/currentUser';
 import { useCallback, useEffect, useState } from 'react';
 import { mainApi } from './utils/MainApi';
+import ProtectedRouteElement from './components/ProtectedRouteElement/ProtectedRouteElement';
 
 function App() {
   const { currentUser, setCurrentUserInfo } = useCurrentUser((state) => state);
   const [loggedIn, setLoggedIn] = useState(false);
+
+  console.log('/', loggedIn)
 
   useEffect(() => {
     document.documentElement.lang = 'ru';
@@ -35,22 +38,38 @@ function App() {
   return (
     <div className='App'>
       <Routes>
-        <Route path='/' element={<HeaderLayout />}>
+        <Route path='/' element={<HeaderLayout loggedIn={loggedIn}/>}>
           <Route
             path='profile'
             element={
-              <Profile
-                currentUser={currentUser}
-                setCurrentUserInfo={setCurrentUserInfo}
-                setLoggedIn={setLoggedIn}
-              />
+              <ProtectedRouteElement loggedIn={loggedIn}>
+                <Profile
+                  currentUser={currentUser}
+                  setCurrentUserInfo={setCurrentUserInfo}
+                  setLoggedIn={setLoggedIn}
+                />
+              </ProtectedRouteElement>
             }
           />
 
           <Route path='' element={<FooterLayout />}>
             <Route path='' element={<Main />} />
-            <Route path='saved-movies' element={<Movies saved />} />
-            <Route path='movies' element={<Movies />} />
+            <Route
+              path='saved-movies'
+              element={
+                <ProtectedRouteElement loggedIn={loggedIn}>
+                  <Movies saved />
+                </ProtectedRouteElement>
+              }
+            />
+            <Route
+              path='movies'
+              element={
+                <ProtectedRouteElement loggedIn={loggedIn}>
+                  <Movies />
+                </ProtectedRouteElement>
+              }
+            />
           </Route>
         </Route>
 

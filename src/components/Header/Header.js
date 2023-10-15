@@ -6,18 +6,18 @@ import { useLocation, Link } from 'react-router-dom';
 import { NavMenu } from "../NavMenu/NavMenu";
 import { useState } from "react";
 
-export const Header = ({ }) => {
+export const Header = ({loggedIn}) => {
   const [navMenuIsOpened, setNavMenuIsOpened] = useState(false)
   let { pathname } = useLocation();
 
-  const isLoggedIn = true //для тестов
+  console.log(loggedIn)
 
   return (<>
     <header className={`header ${pathname === '/' && 'header_is-main-page'}`}>
       <Link to={'/'}>
         <img className="link header__logo" src={headerLogo} alt="Лого" />
       </Link>
-      {isLoggedIn ?
+      {loggedIn ?
         <HeaderLoggedIn pathname={pathname} openMenu={() => setNavMenuIsOpened(true)} />
         : <HeaderNotLoggedIn />
       }

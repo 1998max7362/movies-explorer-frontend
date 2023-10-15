@@ -15,7 +15,7 @@ export const Sign = ({ register, updateUser }) => {
         try {
           const registrationResult = await mainApi.signUp(values);
           const logginResult = await mainApi.signIn(values);
-          updateUser();
+          await updateUser();
           setError('')
           navigate('/movies')
         } catch (err) {
@@ -25,7 +25,7 @@ export const Sign = ({ register, updateUser }) => {
     : async (values) => {
         try {
           const logginResult = await mainApi.signIn(values);
-          updateUser();
+          await updateUser();
           setError('')
           navigate('/movies')
         } catch (err) {

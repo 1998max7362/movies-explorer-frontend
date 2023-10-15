@@ -24,6 +24,7 @@ export const Profile = ({ currentUser, setCurrentUserInfo, setLoggedIn }) => {
   const signOut = async () => {
     try {
       const res = await mainApi.signOut();
+      setLoggedIn(false)
       navigate('/');
     } catch (err) {
       setError(err.message);
