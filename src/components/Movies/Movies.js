@@ -6,6 +6,7 @@ import './Movies.css';
 import { mainApi } from '../../utils/MainApi';
 import { movieApi } from '../../utils/MoviesApi';
 import { getNumOfMovies } from '../../utils/getNumOfMovies';
+import { isObjectInArray } from '../../utils/isObjectInArray';
 
 export const Movies = ({ saved, windowSize }) => {
   const { startNumOfMovies, extraNumOfMovies } = useMemo(
@@ -29,6 +30,12 @@ export const Movies = ({ saved, windowSize }) => {
     } else {
       try {
         const movies = await movieApi.getMovies();
+        const savedMovies = await mainApi.getMovies();
+        movies.forEach((movie) => {
+          if (isObjectInArray(savedMovies, movie)) {
+            movie.liked = true;
+          }
+        });
         setAllMoviesList(movies);
       } catch (err) {
         console.log(err);
