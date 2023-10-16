@@ -1,35 +1,29 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import './SearchForm.css';
 
-export const SearchMovies = ({
-  allMoviesList,
-  moviesToShow,
-  setMoviesToShow,
-}) => {
+export const SearchMovies = ({ allMoviesList, setMoviesToShow }) => {
   const [isShort, setIsShort] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const searchMovies = useCallback(() => {
-    console.log(isShort);
-    const filtereMovies = allMoviesList.filter(
-      (movie) =>
-        (isShort ? movie.duration <= 40 : movie) &&
-        (movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          movie.nameEN.toLowerCase().includes(searchQuery.toLowerCase()))
-    );
-    setMoviesToShow(filtereMovies);
-  }, [allMoviesList, setMoviesToShow]);
-
-  useEffect(()=>{
-    searchMovies()
-  },[isShort,searchMovies])
+  const searchMovies = useCallback(
+    ({ isShort, searchQuery }) => {
+      const filtereMovies = allMoviesList.filter(
+        (movie) =>
+          (isShort ? movie.duration <= 40 : movie) &&
+          (movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            movie.nameEN.toLowerCase().includes(searchQuery.toLowerCase()))
+      );
+      setMoviesToShow(filtereMovies);
+    },
+    [allMoviesList, setMoviesToShow]
+  );
 
   return (
     <form
       className='search'
       onSubmit={(evt) => {
         evt.preventDefault();
-        searchMovies();
+        searchMovies({ isShort, searchQuery });
       }}
     >
       <div className='search__row'>
@@ -50,7 +44,11 @@ export const SearchMovies = ({
             className='search__checkbox'
             type='checkbox'
             checked={isShort}
-            onChange={()=>setIsShort(!isShort)}
+            onChange={() => {
+              searchQuery !== '' &&
+                searchMovies({ isShort: !isShort, searchQuery });
+              setIsShort(!isShort);
+            }}
           />
           <span className='search__slider'></span>
         </label>
