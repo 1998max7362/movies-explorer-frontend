@@ -26,6 +26,7 @@ export const Profile = ({ setLoggedIn }) => {
   const signOut = async () => {
     try {
       await mainApi.signOut();
+      localStorage.clear()
       setLoggedIn(false)
       navigate('/');
     } catch (err) {
