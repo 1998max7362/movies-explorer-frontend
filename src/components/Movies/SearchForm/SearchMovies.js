@@ -1,22 +1,48 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './SearchForm.css';
 
-export const SearchMovies = ({ allMoviesList, setMoviesToShow }) => {
+export const SearchMovies = ({
+  allMoviesList,
+  setFilteredMovies,
+  setCount,
+  saved,
+}) => {
   const [isShort, setIsShort] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  // localStorage.clear()
 
   const searchMovies = useCallback(
     ({ isShort, searchQuery }) => {
-      const filtereMovies = allMoviesList.filter(
+      const filteredMovies = allMoviesList.filter(
         (movie) =>
           (isShort ? movie.duration <= 40 : movie) &&
           (movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()) ||
             movie.nameEN.toLowerCase().includes(searchQuery.toLowerCase()))
       );
-      setMoviesToShow(filtereMovies);
+      localStorage.setItem(
+        saved ? 'filteredSavedMovies' : 'filteredMovies',
+        JSON.stringify({
+          filteredMovies,
+          isShort,
+          searchQuery,
+        })
+      );
+      setCount(0);
+      setFilteredMovies(filteredMovies);
     },
-    [allMoviesList, setMoviesToShow]
+    [allMoviesList, setFilteredMovies, setCount,saved]
   );
+
+  useEffect(() => {
+    if (localStorage.getItem(saved ? 'filteredSavedMovies' : 'filteredMovies')) {
+      const { filteredMovies, isShort, searchQuery } = JSON.parse(
+        localStorage.getItem(saved ? 'filteredSavedMovies' : 'filteredMovies')
+      );
+      setFilteredMovies(filteredMovies);
+      setIsShort(isShort);
+      setSearchQuery(searchQuery);
+    }
+  }, [setFilteredMovies, setIsShort, setSearchQuery,saved]);
 
   return (
     <form
@@ -32,6 +58,7 @@ export const SearchMovies = ({ allMoviesList, setMoviesToShow }) => {
           type='text'
           placeholder='Фильм'
           required
+          value={searchQuery}
           onChange={(evt) => setSearchQuery(evt.target.value)}
         />
         <button className='link search__button' type='submit'>

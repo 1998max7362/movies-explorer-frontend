@@ -1,14 +1,22 @@
-import {  useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { SearchMovies } from './SearchForm/SearchMovies';
 import { MoviesGrid } from './MoviesGrid/MoviesGrid';
 import './Movies.css';
 
 import { mainApi } from '../../utils/MainApi';
 import { movieApi } from '../../utils/MoviesApi';
+import { getNumOfMovies } from '../../utils/getNumOfMovies';
 
 export const Movies = ({ saved, windowSize }) => {
+  const { startNumOfMovies, extraNumOfMovies } = useMemo(
+    () => getNumOfMovies({ windowSize }),
+    [windowSize]
+  );
+
   const [allMoviesList, setAllMoviesList] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
   const [moviesToShow, setMoviesToShow] = useState([]);
+  const [count, setCount] = useState(0);
 
   useMemo(async () => {
     if (saved) {
@@ -28,11 +36,35 @@ export const Movies = ({ saved, windowSize }) => {
     }
   }, [saved]);
 
+  useEffect(() => {
+    setMoviesToShow(
+      filteredMovies.slice(0, startNumOfMovies + count * extraNumOfMovies)
+    );
+  }, [
+    setMoviesToShow,
+    filteredMovies,
+    count,
+    startNumOfMovies,
+    extraNumOfMovies,
+  ]);
+
   return (
     <section className='movies'>
-      <SearchMovies allMoviesList={allMoviesList} setMoviesToShow={setMoviesToShow} moviesToShow={moviesToShow}/>
+      <SearchMovies
+        allMoviesList={allMoviesList}
+        setFilteredMovies={setFilteredMovies}
+        setCount={setCount}
+        saved={saved}
+      />
       <MoviesGrid saved={saved} moviesToShow={moviesToShow} />
-      <button className='link movies__more'>Еще</button>
+      {filteredMovies.length > startNumOfMovies + count * extraNumOfMovies && (
+        <button
+          className='link movies__more'
+          onClick={() => setCount(count + 1)}
+        >
+          Еще
+        </button>
+      )}
     </section>
   );
 };

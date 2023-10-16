@@ -91,7 +91,7 @@ function App() {
                 path='movies'
                 element={
                   <ProtectedRouteElement loggedIn={loggedIn}>
-                    <Movies />
+                    <Movies windowSize={windowSize} />
                   </ProtectedRouteElement>
                 }
               />
