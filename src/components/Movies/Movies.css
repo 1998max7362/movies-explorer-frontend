@@ -24,7 +24,7 @@
 
 .movies__item-container {
   padding-top: 10px;
-  padding-bottom: 25px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #e8e8e8;
   display: flex;
   justify-content: space-between;
@@ -35,6 +35,8 @@
   font-weight: 13;
   font-size: 13px;
   font-weight: 500;
+  min-height: 30px;
+  
 }
 
 .movies__button{

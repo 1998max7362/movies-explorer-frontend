@@ -23,7 +23,7 @@ class MainApi {
   }
 }
 
-export const mainApi = new MainApi({
+export const movieApi = new MainApi({
   baseUrl: filmUrl,
   headers: {
     "Content-Type": "application/json",
