@@ -30,19 +30,27 @@ export const SearchMovies = ({
       setCount(0);
       setFilteredMovies(filteredMovies);
     },
-    [allMoviesList, setFilteredMovies, setCount,saved]
+    [allMoviesList, setFilteredMovies, setCount, saved]
   );
 
   useEffect(() => {
-    if (localStorage.getItem(saved ? 'filteredSavedMovies' : 'filteredMovies')) {
+    if (
+      localStorage.getItem(saved ? 'filteredSavedMovies' : 'filteredMovies')
+    ) {
       const { filteredMovies, isShort, searchQuery } = JSON.parse(
         localStorage.getItem(saved ? 'filteredSavedMovies' : 'filteredMovies')
       );
+      console.log(filteredMovies)
       setFilteredMovies(filteredMovies);
       setIsShort(isShort);
       setSearchQuery(searchQuery);
     }
-  }, [setFilteredMovies, setIsShort, setSearchQuery,saved]);
+    else{
+      setFilteredMovies([]);
+      setIsShort(false);
+      setSearchQuery('');
+    }
+  }, [setFilteredMovies, setIsShort, setSearchQuery, saved]);
 
   return (
     <form
