@@ -10,10 +10,13 @@ export const MoviesItem = ({ movie, getSavedMovies }) => {
 
   const toggleLike = async () => {
     try {
-      !movie.liked
-        ? await mainApi.postMovie(movie)
-        : await mainApi.deleteMovie(movie.id);
-      movie.liked = !movie.liked;
+      if (movie._id) {
+        await mainApi.deleteMovie(movie._id);
+        movie._id = false;
+      } else {
+        const { _id } = await mainApi.postMovie(movie);
+        movie._id = _id;
+      }
       forceUpdate();
     } catch (err) {
       console.log(err);
@@ -46,7 +49,7 @@ export const MoviesItem = ({ movie, getSavedMovies }) => {
         {pathname === '/movies' && (
           <button
             className={`link movies__button ${
-              movie.liked ? 'movies__button_liked' : 'movies__button_not-liked'
+              movie._id ? 'movies__button_liked' : 'movies__button_not-liked'
             }`}
             onClick={toggleLike}
           />
@@ -54,7 +57,7 @@ export const MoviesItem = ({ movie, getSavedMovies }) => {
         {pathname === '/saved-movies' && (
           <button
             className='link movies__button movies__button_remove'
-            onClick={() => removeMovie(movie.id)}
+            onClick={() => removeMovie(movie._id)}
           />
         )}
       </div>

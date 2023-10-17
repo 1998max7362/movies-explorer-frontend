@@ -34,9 +34,10 @@ export const AllMoviesLayout = ({ windowSize }) => {
     try {
       const savedMovies = await mainApi.getMovies();
       const moviesListWithLikes = moviesList.forEach((movie) => {
-        movie.liked = false;
-        if (isFilmInList(savedMovies, movie)) {
-          movie.liked = true;
+        movie._id = false;
+        const _id = isFilmInList(savedMovies, movie)
+        if (_id) {
+          movie._id = _id;
         }
       });
       return moviesListWithLikes;
