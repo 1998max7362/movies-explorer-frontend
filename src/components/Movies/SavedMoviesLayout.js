@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { mainApi } from '../../utils/MainApi';
-import { Movies } from './Movies V1';
+import { Movies } from './Movies';
 
 export const SavedMoviesLayout = ({ windowSize }) => {
   const [savedMovies, setSavedMovies] = useState([]);

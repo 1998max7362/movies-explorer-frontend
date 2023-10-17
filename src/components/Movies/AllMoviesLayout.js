@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { movieApi } from '../../utils/MoviesApi';
 import { mainApi } from '../../utils/MainApi';
 import { isFilmInList } from '../../utils/isFilmInList';
-import { Movies } from './Movies V1';
+import { Movies } from './Movies';
 
 export const AllMoviesLayout = ({ windowSize }) => {
   const [allMovies, setAllMovies] = useState([]);
