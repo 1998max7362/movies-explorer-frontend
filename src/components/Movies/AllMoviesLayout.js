@@ -17,17 +17,6 @@ export const AllMoviesLayout = ({ windowSize }) => {
     }
   }, [setAllMovies]);
 
-  // const getAllMoviesLiked = useCallback(({ allMovies, savedMovies }) => {
-  //   const allMoviesLiked = allMovies.map((movie) => {
-  //     movie.liked = false;
-  //     if (isFilmInList(savedMovies, movie)) {
-  //       movie.liked = true;
-  //     }
-  //     return movie;
-  //   });
-  //   setAllMoviesLiked(allMoviesLiked);
-  // }, []);
-
   const lastSearch = useMemo(() => {
     if (localStorage.getItem('lastSearch')) {
       const { filteredMovies, isShort, searchQuery } = JSON.parse(
@@ -57,17 +46,13 @@ export const AllMoviesLayout = ({ windowSize }) => {
   }, []);
 
   return (
-    <>
-      {allMovies.length > 0 && (
-        <Movies
-          initialFilteredMovies={lastSearch && lastSearch.filteredMovies}
-          initialIsShort={lastSearch && lastSearch.isShort}
-          initialSearchQuery={lastSearch && lastSearch.searchQuery}
-          fullMoviesList={allMovies}
-          windowSize={windowSize}
-          updateLikes={updateLikes}
-        />
-      )}
-    </>
+    <Movies
+      initialFilteredMovies={lastSearch && lastSearch.filteredMovies}
+      initialIsShort={lastSearch && lastSearch.isShort}
+      initialSearchQuery={lastSearch && lastSearch.searchQuery}
+      fullMoviesList={allMovies}
+      windowSize={windowSize}
+      updateLikes={updateLikes}
+    />
   );
 };

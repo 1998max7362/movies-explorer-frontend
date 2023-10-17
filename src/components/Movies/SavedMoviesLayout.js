@@ -20,15 +20,11 @@ export const SavedMoviesLayout = ({ windowSize }) => {
   }, [getSavedMovies]);
 
   return (
-    <>
-      {savedMovies.length > 0 && (
-        <Movies
-          initialFilteredMovies={savedMovies}
-          fullMoviesList={savedMovies}
-          windowSize={windowSize}
-          getSavedMovies={getSavedMovies}
-        />
-      )}
-    </>
+    <Movies
+      initialFilteredMovies={savedMovies}
+      fullMoviesList={savedMovies}
+      windowSize={windowSize}
+      getSavedMovies={getSavedMovies}
+    />
   );
 };
