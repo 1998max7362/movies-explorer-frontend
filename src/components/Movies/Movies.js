@@ -10,7 +10,8 @@ export const Movies = ({
   initialSearchQuery,
   initialFilteredMovies = [],
   updateLikes = () => {},
-  getSavedMovies
+  getSavedMovies,
+  setError
 }) => {
   const [filteredMovies, setFilteredMovies] = useState(initialFilteredMovies);
 
@@ -26,14 +27,14 @@ export const Movies = ({
         initialSearchQuery={initialSearchQuery}
         setFilteredMovies={setFilteredMovies}
         fullMoviesList={fullMoviesList}
+        setError={setError}
       />
-      {fullMoviesList && (
-        <MoviesGrid
-          windowSize={windowSize}
-          filteredMoviesList={filteredMovies}
-          getSavedMovies={getSavedMovies}
-        />
-      )}
+      <MoviesGrid
+      setError={setError}
+        windowSize={windowSize}
+        filteredMoviesList={filteredMovies}
+        getSavedMovies={getSavedMovies}
+      />
     </section>
   );
 };

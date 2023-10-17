@@ -2,7 +2,11 @@ import { MoviesItem } from './MoviesItem';
 import { getNumOfMovies } from '../../../utils/getNumOfMovies';
 import { useEffect, useMemo, useState } from 'react';
 
-export const MoviesGrid = ({ windowSize, filteredMoviesList,getSavedMovies }) => {
+export const MoviesGrid = ({
+  windowSize,
+  filteredMoviesList,
+  getSavedMovies,
+}) => {
   const [count, setCount] = useState(0);
   const [moviesToShow, setMoviesToShow] = useState([]);
 
@@ -12,9 +16,9 @@ export const MoviesGrid = ({ windowSize, filteredMoviesList,getSavedMovies }) =>
   );
 
   // Если список отфильтрованных поменялся устанавливаем кол-во фильмов по умолчанию
-  useEffect(()=>{
-    setCount(0)
-  },[filteredMoviesList,setCount])
+  useEffect(() => {
+    setCount(0);
+  }, [filteredMoviesList, setCount]);
 
   // При изменении Count (нажатии "еще")
   useEffect(() => {
@@ -34,7 +38,6 @@ export const MoviesGrid = ({ windowSize, filteredMoviesList,getSavedMovies }) =>
   return (
     <>
       <div className='movies__grid'>
-
         {moviesToShow.map((movie, idx) => (
           <MoviesItem
             movie={movie}
@@ -43,7 +46,6 @@ export const MoviesGrid = ({ windowSize, filteredMoviesList,getSavedMovies }) =>
           />
         ))}
       </div>
-
       {filteredMoviesList.length >
         startNumOfMovies + count * extraNumOfMovies && (
         <button

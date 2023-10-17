@@ -7,6 +7,7 @@ export const SearchMovies = ({
   initialSearchQuery = '',
   setFilteredMovies,
   fullMoviesList,
+  setError,
 }) => {
   const [isShort, setIsShort] = useState(initialIsShort);
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
@@ -29,10 +30,13 @@ export const SearchMovies = ({
             searchQuery,
           })
         );
+        if (filteredMovies.length === 0) {
+          setError('Нет результатов');
+        }
       }
       setFilteredMovies(filteredMovies);
     },
-    [fullMoviesList, pathname, setFilteredMovies]
+    [fullMoviesList, pathname, setFilteredMovies, setError]
   );
 
   const searchMovies = useCallback(
@@ -47,7 +51,7 @@ export const SearchMovies = ({
 
   // Для удаления карточек
   useEffect(() => {
-    if (pathname==='/saved-movies'){
+    if (pathname === '/saved-movies') {
       filterMovies({ isShort, searchQuery });
     }
   }, [fullMoviesList, filterMovies, pathname]);
