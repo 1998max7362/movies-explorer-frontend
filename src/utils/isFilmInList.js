@@ -1,6 +1,6 @@
-export function isObjectInArray(arr, target) {
+export function isFilmInList(arr, target) {
   for (let i = 0; i < arr.length; i++) {
-    if (JSON.stringify(arr[i]) === JSON.stringify(target)) {
+    if (arr[i].id === target.id) {
       return true; // Object found in the array
     }
   }

@@ -5,7 +5,7 @@ import { HeaderLayout } from './components/HeaderLayout/HeaderLayout';
 import { Profile } from './components/Profile/Profile';
 import { FooterLayout } from './components/FooterLayout/FooterLayout';
 import { Main } from './components/Main/Main';
-import { Movies } from './components/Movies/Movies';
+// import { Movies } from './components/Movies/Movies';
 import { Sign } from './components/Sign/Sign';
 import { Error404 } from './components/Error404/Error404';
 import { useCurrentUser } from './contexts/currentUser';
@@ -13,6 +13,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { mainApi } from './utils/MainApi';
 import ProtectedRouteElement from './components/ProtectedRouteElement/ProtectedRouteElement';
 import Preloader from './components/Preloader/Preloader';
+import { AllMoviesLayout } from './components/Movies/AllMoviesLayout';
+import { SavedMoviesLayout } from './components/Movies/SavedMoviesLayout';
 
 function App() {
   const { currentUser, setCurrentUserInfo } = useCurrentUser((state) => state);
@@ -83,7 +85,8 @@ function App() {
                 path='saved-movies'
                 element={
                   <ProtectedRouteElement loggedIn={loggedIn}>
-                    <Movies saved windowSize={windowSize} />
+                    {/* <Movies saved windowSize={windowSize} /> */}
+                    <SavedMoviesLayout windowSize={windowSize}/>
                   </ProtectedRouteElement>
                 }
               />
@@ -91,7 +94,8 @@ function App() {
                 path='movies'
                 element={
                   <ProtectedRouteElement loggedIn={loggedIn}>
-                    <Movies windowSize={windowSize} />
+                    {/* <Movies windowSize={windowSize} /> */}
+                    <AllMoviesLayout windowSize={windowSize}/>
                   </ProtectedRouteElement>
                 }
               />
