@@ -101,9 +101,9 @@ function App() {
 
           <Route
             path='signup'
-            element={<Sign register updateUser={updateUser} />}
+            element={<Sign register updateUser={updateUser} loggedIn={loggedIn}/>}
           />
-          <Route path='signin' element={<Sign updateUser={updateUser} />} />
+          <Route path='signin' element={<Sign updateUser={updateUser} loggedIn={loggedIn}/>} />
           <Route path='*' element={<Error404 />} />
         </Routes>
       )}

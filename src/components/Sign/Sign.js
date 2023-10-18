@@ -6,9 +6,13 @@ import * as Yup from 'yup';
 import { mainApi } from '../../utils/MainApi';
 import { useState } from 'react';
 
-export const Sign = ({ register, updateUser }) => {
+export const Sign = ({ register, updateUser, loggedIn }) => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  if (loggedIn){
+    navigate(-1)
+  }
 
   const handleSubmit = register
     ? async (values) => {
