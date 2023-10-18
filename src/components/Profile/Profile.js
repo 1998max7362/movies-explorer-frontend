@@ -5,9 +5,13 @@ import * as Yup from 'yup';
 import './Profile.css';
 import { mainApi } from '../../utils/MainApi';
 import { useCurrentUser } from '../../contexts/currentUser';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
 
 export const Profile = ({ setLoggedIn }) => {
   const [readOnly, setReadOnly] = useState(true);
+  const [open, setOpen] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const { currentUser, setCurrentUserInfo } = useCurrentUser((state) => state);
@@ -17,6 +21,7 @@ export const Profile = ({ setLoggedIn }) => {
       const newUserInfo = await mainApi.patchCurrentUserInfo(values);
       setCurrentUserInfo(newUserInfo);
       setError('');
+      setOpen(true);
       setReadOnly(true);
     } catch (err) {
       setError(err.message);
@@ -49,7 +54,10 @@ export const Profile = ({ setLoggedIn }) => {
       )
       .required('Обязательное поле'),
     email: Yup.string()
-      .matches(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/,'Неверный формат e-mail')
+      .matches(
+        /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/,
+        'Неверный формат e-mail'
+      )
       .required('Обязательное поле'),
   });
 
@@ -130,6 +138,11 @@ export const Profile = ({ setLoggedIn }) => {
           Выйти из аккаунта
         </button>
       )}
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <DialogContent>
+          <DialogContentText>Профиль успешно обновлён!</DialogContentText>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
