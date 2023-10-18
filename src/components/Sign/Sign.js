@@ -16,8 +16,8 @@ export const Sign = ({ register, updateUser }) => {
           await mainApi.signUp(values);
           await mainApi.signIn(values);
           await updateUser();
-          setError('')
-          navigate('/movies')
+          setError('');
+          navigate('/movies');
         } catch (err) {
           setError(err.message);
         }
@@ -26,8 +26,8 @@ export const Sign = ({ register, updateUser }) => {
         try {
           await mainApi.signIn(values);
           await updateUser();
-          setError('')
-          navigate('/movies')
+          setError('');
+          navigate('/movies');
         } catch (err) {
           setError(err.message);
         }
@@ -57,7 +57,10 @@ export const Sign = ({ register, updateUser }) => {
             'Имя должно состоять из латиницы, кириллицы, пробела или дефиса'
           ),
     email: Yup.string()
-      .email('Неверный формат e-mail')
+      .matches(
+        /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/,
+        'Неверный формат e-mail'
+      )
       .required('Обязательное поле'),
     password: Yup.string().required('Обязательное поле'),
   });

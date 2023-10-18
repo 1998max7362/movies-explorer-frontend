@@ -26,8 +26,8 @@ export const Profile = ({ setLoggedIn }) => {
   const signOut = async () => {
     try {
       await mainApi.signOut();
-      localStorage.clear()
-      setLoggedIn(false)
+      localStorage.clear();
+      setLoggedIn(false);
       navigate('/');
     } catch (err) {
       setError(err.message);
@@ -49,7 +49,7 @@ export const Profile = ({ setLoggedIn }) => {
       )
       .required('Обязательное поле'),
     email: Yup.string()
-      .email('Неверный формат e-mail')
+      .matches(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/,'Неверный формат e-mail')
       .required('Обязательное поле'),
   });
 
@@ -106,8 +106,8 @@ export const Profile = ({ setLoggedIn }) => {
             <button
               className={`link profile__form-button ${
                 (!formik.isValid ||
-                (currentUser.name === formik.values.name &&
-                currentUser.email === formik.values.email)) &&
+                  (currentUser.name === formik.values.name &&
+                    currentUser.email === formik.values.email)) &&
                 'profile__form-button_disabled'
               }`}
               type='submit'
