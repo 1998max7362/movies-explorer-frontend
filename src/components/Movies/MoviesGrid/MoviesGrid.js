@@ -6,7 +6,7 @@ export const MoviesGrid = ({moviesToShow, updateLastSearch, removeMovie}) => {
         {moviesToShow.map((movie, idx) => (
           <MoviesItem
             movie={movie}
-            key={Date.now() + idx}
+            key={movie.id}
             removeMovie={removeMovie}
             updateLastSearch={updateLastSearch}
           />
