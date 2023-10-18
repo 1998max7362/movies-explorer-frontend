@@ -65,6 +65,7 @@ export const Movies = ({ windowSize }) => {
             })
           );
         }
+        setCount(0)
         setFilteredMovies(filteredMovies);
       } catch (err) {
         console.log(err);
