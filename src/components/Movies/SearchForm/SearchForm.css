@@ -17,6 +17,14 @@
   width: 100%;
 }
 
+.search__input-error{
+  color: #ff3055;
+  font-size: 10px;
+  line-height: 1.2;
+  margin-top: 6px;
+  min-height: 1.2em;
+}
+
 .search__row:focus{
   background-color: aqua;
 }
@@ -41,7 +49,7 @@
   display: flex;
   align-items: center;
   padding: 0;
-  margin-top: 32px;
+  margin-top: 14px;
 }
 
 .search__switch {
@@ -133,7 +141,7 @@
 
   .search__short-movies-switch {
     justify-content: center;
-    margin-top: 41px;
+    margin-top: 23px;
   }
 
   .search__short-movies-text {

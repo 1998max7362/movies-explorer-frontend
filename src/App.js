@@ -5,7 +5,6 @@ import { HeaderLayout } from './components/HeaderLayout/HeaderLayout';
 import { Profile } from './components/Profile/Profile';
 import { FooterLayout } from './components/FooterLayout/FooterLayout';
 import { Main } from './components/Main/Main';
-// import { Movies } from './components/Movies/Movies';
 import { Sign } from './components/Sign/Sign';
 import { Error404 } from './components/Error404/Error404';
 import { useCurrentUser } from './contexts/currentUser';
@@ -13,8 +12,6 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { mainApi } from './utils/MainApi';
 import ProtectedRouteElement from './components/ProtectedRouteElement/ProtectedRouteElement';
 import Preloader from './components/Preloader/Preloader';
-// import { AllMoviesLayout } from './components/Movies/AllMoviesLayout_old';
-// import { SavedMoviesLayout } from './components/Movies/SavedMoviesLayout_old';
 import { Movies } from './components/Movies/Movies';
 import { SavedMovies } from './components/Movies/SavedMovies';
 
