@@ -1,5 +1,5 @@
-// export const url = 'https://nobodymaximdiploma.api.nomoredomainsrocks.ru'
-export const URL = 'http://localhost:3002'
+export const URL = 'https://nobodymaximdiploma.api.nomoredomainsrocks.ru'
+// export const URL = 'http://localhost:3002'
 export const FILMURL = 'https://api.nomoreparties.co'
 
 export const SHORTMOVIESDURATION = 40
