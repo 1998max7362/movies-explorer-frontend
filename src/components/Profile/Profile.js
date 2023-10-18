@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import './Profile.css';
 import { mainApi } from '../../utils/MainApi';
-import { useCurrentUser } from '../../contexts/currentUser';
+import { CurrentUserContext } from '../../contexts/currentUser';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -14,7 +14,8 @@ export const Profile = ({ setLoggedIn }) => {
   const [open, setOpen] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { currentUser, setCurrentUserInfo } = useCurrentUser((state) => state);
+
+  const { currentUser, setCurrentUserInfo } = useContext(CurrentUserContext)
 
   const handleSubmit = async (values) => {
     try {

@@ -1,9 +1,3 @@
-import { create } from 'zustand';
+import React from "react";
 
-export const useCurrentUser = create((set) => ({
-  currentUser: { name: '', email: '' },
-  setCurrentUserInfo: (someUserInfo) =>
-    set((state) => ({
-      currentUser: { ...state.currentUser, ...someUserInfo },
-    })),
-}));
+export const CurrentUserContext = React.createContext();
