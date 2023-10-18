@@ -3,10 +3,8 @@ import { SearchMovies } from './SearchForm/SearchMovies';
 import { MoviesGrid } from './MoviesGrid/MoviesGrid';
 import './Movies.css';
 import { getNumOfMovies } from '../../utils/getNumOfMovies';
-import { movieApi } from '../../utils/MoviesApi';
 import { mainApi } from '../../utils/MainApi';
 import Preloader from '../Preloader/Preloader';
-import { isFilmInList } from '../../utils/isFilmInList';
 
 export const SavedMovies = ({ windowSize }) => {
   const [savedMovies, setSavedMovies] = useState([]);
@@ -90,7 +88,7 @@ export const SavedMovies = ({ windowSize }) => {
         <p className='text error'>{error}</p>
       ) : (
         <>
-          <MoviesGrid moviesToShow={moviesToShow} removeMovie={removeMovie}/>
+          <MoviesGrid moviesToShow={moviesToShow} removeMovie={removeMovie} />
           {filteredMovies.length >
             startNumOfMovies + count * extraNumOfMovies && (
             <button

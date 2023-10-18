@@ -1,6 +1,4 @@
 import { MoviesItem } from './MoviesItem';
-import { getNumOfMovies } from '../../../utils/getNumOfMovies';
-import { useEffect, useMemo, useState } from 'react';
 
 export const MoviesGrid = ({moviesToShow, updateLastSearch, removeMovie}) => {
   return (
