@@ -4,7 +4,7 @@ import { useReducer, useCallback } from 'react';
 import { filmUrl } from '../../../utils/constants';
 import { mainApi } from '../../../utils/MainApi';
 
-export const MoviesItem = ({ movie, removeMovie,updateLastSearch }) => {
+export const MoviesItem = ({ movie, getSavedMovies }) => {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
   let { pathname } = useLocation();
 
@@ -17,23 +17,22 @@ export const MoviesItem = ({ movie, removeMovie,updateLastSearch }) => {
         const { _id } = await mainApi.postMovie(movie);
         movie._id = _id;
       }
-      updateLastSearch()
       forceUpdate();
     } catch (err) {
       console.log(err);
     }
   };
 
-  const handleRemove = useCallback(
+  const removeMovie = useCallback(
     async (id) => {
       try {
         await mainApi.deleteMovie(id);
-        removeMovie(id);
+        getSavedMovies();
       } catch (err) {
         console.log(err);
       }
     },
-    [removeMovie]
+    [getSavedMovies]
   );
 
   return (
@@ -58,7 +57,7 @@ export const MoviesItem = ({ movie, removeMovie,updateLastSearch }) => {
         {pathname === '/saved-movies' && (
           <button
             className='link movies__button movies__button_remove'
-            onClick={() => handleRemove(movie._id)}
+            onClick={() => removeMovie(movie._id)}
           />
         )}
       </div>

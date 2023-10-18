@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { mainApi } from '../../utils/MainApi';
-import { Movies } from './Movies';
+import { Movies } from './Movies_old';
 import Preloader from '../Preloader/Preloader';
 
 export const SavedMoviesLayout = ({ windowSize }) => {

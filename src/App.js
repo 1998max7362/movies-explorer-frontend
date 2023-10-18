@@ -13,8 +13,10 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { mainApi } from './utils/MainApi';
 import ProtectedRouteElement from './components/ProtectedRouteElement/ProtectedRouteElement';
 import Preloader from './components/Preloader/Preloader';
-import { AllMoviesLayout } from './components/Movies/AllMoviesLayout';
-import { SavedMoviesLayout } from './components/Movies/SavedMoviesLayout';
+// import { AllMoviesLayout } from './components/Movies/AllMoviesLayout_old';
+// import { SavedMoviesLayout } from './components/Movies/SavedMoviesLayout_old';
+import { Movies } from './components/Movies/Movies';
+import { SavedMovies } from './components/Movies/SavedMovies';
 
 function App() {
   const { currentUser, setCurrentUserInfo } = useCurrentUser((state) => state);
@@ -86,7 +88,8 @@ function App() {
                 element={
                   <ProtectedRouteElement loggedIn={loggedIn}>
                     {/* <Movies saved windowSize={windowSize} /> */}
-                    <SavedMoviesLayout windowSize={windowSize}/>
+                    {/* <SavedMoviesLayout windowSize={windowSize}/> */}
+                    <SavedMovies windowSize={windowSize}/>
                   </ProtectedRouteElement>
                 }
               />
@@ -95,7 +98,8 @@ function App() {
                 element={
                   <ProtectedRouteElement loggedIn={loggedIn}>
                     {/* <Movies windowSize={windowSize} /> */}
-                    <AllMoviesLayout windowSize={windowSize}/>
+                    {/* <AllMoviesLayout windowSize={windowSize}/> */}
+                    <Movies windowSize={windowSize}/>
                   </ProtectedRouteElement>
                 }
               />

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { movieApi } from '../../utils/MoviesApi';
 import { mainApi } from '../../utils/MainApi';
 import { isFilmInList } from '../../utils/isFilmInList';
-import { Movies } from './Movies';
+import { Movies } from './Movies_old';
 import Preloader from '../Preloader/Preloader';
 
 export const AllMoviesLayout = ({ windowSize }) => {
