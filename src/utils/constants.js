@@ -1,2 +1,2 @@
-export const url = 'http://localhost:3002'
+export const url = 'https://nobodymaximdiploma.api.nomoredomainsrocks.ru/'
 export const filmUrl = 'https://api.nomoreparties.co'
