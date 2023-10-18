@@ -73,25 +73,25 @@ export const Movies = ({ windowSize }) => {
     [getAllMoviesWIthLikes]
   );
 
-    // Чтобы писать в localstorage последние лайки уже после поиска
-    const updateLastSearch = useCallback(() => {
-      if (localStorage.getItem('lastSearch')) {
-        const { lastIsShort, lastSearchQuery } = JSON.parse(
-          localStorage.getItem('lastSearch')
-        );
-        localStorage.setItem(
-          'lastSearch',
-          JSON.stringify({
-            lastFilteredMovies: filteredMovies,
-            lastIsShort,
-            lastSearchQuery,
-          })
-        );
-      }
-    }, [filteredMovies]);
+  // Чтобы писать в localstorage последние лайки уже после поиска
+  const updateLastSearch = useCallback(() => {
+    if (localStorage.getItem('lastSearch')) {
+      const { lastIsShort, lastSearchQuery } = JSON.parse(
+        localStorage.getItem('lastSearch')
+      );
+      localStorage.setItem(
+        'lastSearch',
+        JSON.stringify({
+          lastFilteredMovies: filteredMovies,
+          lastIsShort,
+          lastSearchQuery,
+        })
+      );
+    }
+  }, [filteredMovies]);
 
-  // Если есть сеть, то подгружаем лайки, если нет, то без лайков
-  const lastSearch = useMemo(async () => {
+  // Если есть сеть, то подгружаем новые лайки, если нет, то без новых лайков
+  useMemo(async () => {
     if (localStorage.getItem('lastSearch')) {
       const { lastFilteredMovies, lastIsShort, lastSearchQuery } = JSON.parse(
         localStorage.getItem('lastSearch')
@@ -121,11 +121,19 @@ export const Movies = ({ windowSize }) => {
       } catch (err) {
         setPreload(false);
         console.log(err);
-        setFilteredMovies(lastFilteredMovies)
+        setFilteredMovies(lastFilteredMovies);
       }
-      return { lastIsShort, lastSearchQuery };
     }
   }, [setFilteredMovies]);
+
+  const lastSearch = useMemo(() => {
+    if (localStorage.getItem('lastSearch')) {
+      const { lastIsShort, lastSearchQuery } = JSON.parse(
+        localStorage.getItem('lastSearch')
+      );
+      return { lastIsShort, lastSearchQuery };
+    }
+  }, []);
 
   useEffect(() => {
     const moviesListToShow = filteredMovies.slice(
@@ -148,7 +156,10 @@ export const Movies = ({ windowSize }) => {
         <p className='text error'>{error}</p>
       ) : (
         <>
-          <MoviesGrid moviesToShow={moviesToShow} updateLastSearch={updateLastSearch}/>
+          <MoviesGrid
+            moviesToShow={moviesToShow}
+            updateLastSearch={updateLastSearch}
+          />
           {filteredMovies.length >
             startNumOfMovies + count * extraNumOfMovies && (
             <button
