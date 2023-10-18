@@ -84,9 +84,7 @@ function App() {
                 path='saved-movies'
                 element={
                   <ProtectedRouteElement loggedIn={loggedIn}>
-                    {/* <Movies saved windowSize={windowSize} /> */}
-                    {/* <SavedMoviesLayout windowSize={windowSize}/> */}
-                    <SavedMovies windowSize={windowSize}/>
+                    <SavedMovies/>
                   </ProtectedRouteElement>
                 }
               />
@@ -94,8 +92,6 @@ function App() {
                 path='movies'
                 element={
                   <ProtectedRouteElement loggedIn={loggedIn}>
-                    {/* <Movies windowSize={windowSize} /> */}
-                    {/* <AllMoviesLayout windowSize={windowSize}/> */}
                     <Movies windowSize={windowSize}/>
                   </ProtectedRouteElement>
                 }

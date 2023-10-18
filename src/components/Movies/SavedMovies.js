@@ -6,18 +6,12 @@ import { getNumOfMovies } from '../../utils/getNumOfMovies';
 import { mainApi } from '../../utils/MainApi';
 import Preloader from '../Preloader/Preloader';
 
-export const SavedMovies = ({ windowSize }) => {
+export const SavedMovies = () => {
   const [savedMovies, setSavedMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const [moviesToShow, setMoviesToShow] = useState([]);
-  const [count, setCount] = useState(0);
   const [error, setError] = useState('');
   const [preload, setPreload] = useState(false);
 
-  const { startNumOfMovies, extraNumOfMovies } = useMemo(
-    () => getNumOfMovies({ windowSize }),
-    [windowSize]
-  );
 
   const getSavedMovies = useCallback(async () => {
     try {
@@ -59,14 +53,6 @@ export const SavedMovies = ({ windowSize }) => {
     [savedMovies]
   );
 
-  useEffect(() => {
-    const moviesListToShow = filteredMovies.slice(
-      0,
-      startNumOfMovies + count * extraNumOfMovies
-    );
-    setMoviesToShow(moviesListToShow);
-  }, [filteredMovies, count, extraNumOfMovies, startNumOfMovies]);
-
   const removeMovie = useCallback(
     (_id) => {
       setSavedMovies((savedMovies) =>
@@ -87,20 +73,7 @@ export const SavedMovies = ({ windowSize }) => {
       ) : error ? (
         <p className='text error'>{error}</p>
       ) : (
-        <>
-          <MoviesGrid moviesToShow={moviesToShow} removeMovie={removeMovie} />
-          {filteredMovies.length >
-            startNumOfMovies + count * extraNumOfMovies && (
-            <button
-              className='link movies__more'
-              onClick={() => {
-                setCount(count + 1);
-              }}
-            >
-              Еще
-            </button>
-          )}
-        </>
+        <MoviesGrid moviesToShow={filteredMovies} removeMovie={removeMovie} />
       )}
     </section>
   );
