@@ -9,6 +9,7 @@ import Preloader from '../Preloader/Preloader';
 import { isFilmInList } from '../../utils/isFilmInList';
 
 export const Movies = ({ windowSize }) => {
+  const [allMovies, setAllMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [moviesToShow, setMoviesToShow] = useState([]);
   const [count, setCount] = useState(0);
@@ -23,24 +24,41 @@ export const Movies = ({ windowSize }) => {
   const getAllMoviesWIthLikes = useCallback(async () => {
     try {
       setPreload(true);
-      const allMovies = await movieApi.getMovies();
-      const savedMovies = await mainApi.getMovies();
-      setPreload(false);
-      const moviesListWithLikes = allMovies.map((movie) => {
-        movie._id = false;
-        const _id = isFilmInList(savedMovies, movie);
-        if (_id) {
-          movie._id = _id;
-        }
-        return movie;
-      });
-      return moviesListWithLikes;
+      if (allMovies.length === 0) {
+        const newAllMovies = await movieApi.getMovies();
+        const savedMovies = await mainApi.getMovies();
+        setAllMovies(newAllMovies);
+        setPreload(false);
+        setPreload(false);
+        const moviesListWithLikes = newAllMovies.map((movie) => {
+          movie._id = false;
+          const _id = isFilmInList(savedMovies, movie);
+          if (_id) {
+            movie._id = _id;
+          }
+          return movie;
+        });
+        return moviesListWithLikes;
+      } else {
+        const savedMovies = await mainApi.getMovies();
+        setPreload(false);
+        setPreload(false);
+        const moviesListWithLikes = allMovies.map((movie) => {
+          movie._id = false;
+          const _id = isFilmInList(savedMovies, movie);
+          if (_id) {
+            movie._id = _id;
+          }
+          return movie;
+        });
+        return moviesListWithLikes;
+      }
     } catch (err) {
       setPreload(false);
       console.log(err);
       setError('Произошла ошибка при загрузке данных с сервера');
     }
-  }, [setPreload]);
+  }, [setPreload, allMovies]);
 
   const handleSearch = useCallback(
     async ({ isShort, searchQuery }) => {
@@ -65,7 +83,7 @@ export const Movies = ({ windowSize }) => {
             })
           );
         }
-        setCount(0)
+        setCount(0);
         setFilteredMovies(filteredMovies);
       } catch (err) {
         console.log(err);
