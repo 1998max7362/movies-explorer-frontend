@@ -7,6 +7,7 @@ import { movieApi } from '../../utils/MoviesApi';
 import { mainApi } from '../../utils/MainApi';
 import Preloader from '../Preloader/Preloader';
 import { isFilmInList } from '../../utils/isFilmInList';
+import { SHORTMOVIESDURATION } from '../../utils/constants';
 
 export const Movies = ({ windowSize }) => {
   const [allMovies, setAllMovies] = useState([]);
@@ -66,7 +67,7 @@ export const Movies = ({ windowSize }) => {
         const moviesList = await getAllMoviesWIthLikes();
         const filteredMovies = moviesList.filter(
           (movie) =>
-            (isShort ? movie.duration <= 40 : movie) &&
+            (isShort ? movie.duration <= SHORTMOVIESDURATION : movie) &&
             (movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()) ||
               movie.nameEN.toLowerCase().includes(searchQuery.toLowerCase()))
         );

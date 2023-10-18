@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { formatFilmDuration } from '../../../utils/formatFilmDuration';
 import { useReducer, useCallback } from 'react';
-import { filmUrl } from '../../../utils/constants';
+import { FILMURL } from '../../../utils/constants';
 import { mainApi } from '../../../utils/MainApi';
 
 export const MoviesItem = ({ movie, removeMovie,updateLastSearch }) => {
@@ -41,7 +41,7 @@ export const MoviesItem = ({ movie, removeMovie,updateLastSearch }) => {
       <Link to={movie.trailerLink} target='_blank'>
         <img
           className='link movies__item-img'
-          src={`${filmUrl}/${movie.image.url}`}
+          src={`${FILMURL}/${movie.image.url}`}
           alt='картинка фильма'
         />
       </Link>
