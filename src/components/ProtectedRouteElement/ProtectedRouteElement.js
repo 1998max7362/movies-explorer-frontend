@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 const ProtectedRouteElement = ({ children, loggedIn }) => {
 
   return <>
-    {loggedIn? children: <Navigate to="/signin" replace />}
+    {loggedIn? children: <Navigate to="/" replace />}
   </>
 };
 
