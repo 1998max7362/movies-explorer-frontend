@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { SearchMovies } from './SearchForm/SearchMovies';
 import { MoviesGrid } from './MoviesGrid/MoviesGrid';
 import './Movies.css';
-import { getNumOfMovies } from '../../utils/getNumOfMovies';
 import { mainApi } from '../../utils/MainApi';
 import Preloader from '../Preloader/Preloader';
 
